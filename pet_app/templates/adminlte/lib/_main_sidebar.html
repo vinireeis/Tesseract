@@ -1,0 +1,39 @@
+<!-- -----------subscrevendo o bootstrap (cor da barra lateral + header)-->
+<style>
+    .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+        background-color: black;       
+    }
+    
+    html body.skin-blue.sidebar-mini div.wrapper aside.main-sidebar section.sidebar ul.sidebar-menu li.header{
+        background-color: rgb(160, 159, 159);        
+        color: white;
+    }
+    
+    html body.skin-blue.sidebar-mini div.wrapper aside.main-sidebar section.sidebar{
+        border-radius: 15px;
+    }
+        
+</style>
+<!-- ----------- end subscrevendo o bootstrap-->
+
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+
+{% block logo_text %}     
+<span class="brand-text font-weight-bold">CLINICA PET</span>
+{% endblock logo_text %}
+
+{% block nav_heading %}
+Acessos Rápidos
+{% endblock nav_heading %}
+
+
+{% block nav_links %}
+
+    <li class="nav-item">
+        <a href="{% url 'listar_funcionarios' %}" class="nav-link"> <br>             
+            <p style="color: #fff;"><b> FUNCIONÁRIOS</b></p>
+        </a>
+    </li>
+
+
+{% endblock nav_links %}
