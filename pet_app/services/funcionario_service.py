@@ -22,3 +22,13 @@ def listar_funcionario_id(id):
 
 def remover_funcionario(funcionario):
     funcionario.delete()
+
+
+def editar_funcionario(funcionario, funcionario_novo):
+    funcionario.nome = funcionario_novo.nome
+    funcionario.nascimento = funcionario_novo.nascimento
+    funcionario.cargo = funcionario_novo.cargo
+    funcionario.username = funcionario_novo.username
+    funcionario.password = funcionario_novo.password
+
+    funcionario.save(force_update=True)
