@@ -47,3 +47,34 @@ def remover_funcionario(request, id):
     return render(
         request, "funcionarios/confirma_exclusao.html", {"funcionario": funcionario}
     )
+
+
+def editar_funcionario(request, id):
+    funcionario_editar = funcionario_service.listar_funcionario_id(id)
+    form_funcionario = FuncionarioForm(
+        request.POST or None, instance=funcionario_editar
+    )
+
+    if form_funcionario.is_valid():
+        nome = form_funcionario.cleaned_data["nome"]
+        nascimento = form_funcionario.cleaned_data["nascimento"]
+        cargo = form_funcionario.cleaned_data["cargo"]
+        username = form_funcionario.cleaned_data["username"]
+        password = form_funcionario.cleaned_data["password1"]
+
+        funcionario_novo = funcionario.Funcionario(
+            nome=nome,
+            nascimento=nascimento,
+            cargo=cargo,
+            username=username,
+            password=password,
+        )
+        funcionario_service.editar_funcionario(funcionario_editar, funcionario_novo)
+
+        return redirect("listar_funcionarios")
+
+    return render(
+        request,
+        "funcionarios/form_funcionario.html",
+        {"form_funcionario": form_funcionario},
+    )

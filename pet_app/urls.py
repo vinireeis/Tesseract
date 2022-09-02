@@ -17,4 +17,9 @@ urlpatterns = [
         funcionario_views.remover_funcionario,
         name="remover_funcionario",
     ),
+    path(
+        "editar_funcionario/<int:id>",
+        funcionario_views.editar_funcionario,
+        name="editar_funcionario",
+    ),
 ]
