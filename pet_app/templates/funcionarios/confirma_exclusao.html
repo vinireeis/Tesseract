@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+EXCLUSÃO DE FUNCIONARIO
+{% endblock title %}
+
+{% block content %}
+
+<style>   	
+	.center-column{        
+        text-align: left;
+		width:600px;
+		margin: 20px auto;
+		padding:20px;
+		background-color: #fff;
+		border-radius: 3px;		
+		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+	}
+
+    .box box-solid box-danger{
+        margin-bottom: 10px;        
+    }
+
+</style>
+
+<div class="center-column">
+    <div class="box box-solid box-danger"> 
+        <div class="box-header with-border">
+            <div class="card-title" style="font-size:20px">
+                <b>TEM CERTEZA QUE DESEJA REMOVER O FUNCIONARIO A SEGUIR?</b>
+            </div>        
+        </div>    
+        <br>
+        <div class="box-body" style="font-size:18px">
+            <p><b>NOME: </b>{{funcionario.nome}}</p>
+            <p><b>CARGO: </b>{{funcionario.cargo}}</p>
+            <p><b>DATA DE NASCIMENTO: </b>{{funcionario.nascimento}}</p>
+        </div>
+        <form method="POST">        
+            <br>
+            {% csrf_token %} 
+            <td>
+            <button class="btn btn-danger" type="submit" style="margin-left: 10px"> EXCLUIR</button>  </td>        
+            <td>
+                <a href="{% url 'listar_funcionarios' %}" class="btn btn-info" style="margin-left: 10px">
+                    VOLTAR
+                </a>
+            </td>
+            <br><br>          
+        </form>     
+    </div>
+</div>
+
+{% endblock content %}

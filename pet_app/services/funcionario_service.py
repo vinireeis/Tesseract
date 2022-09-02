@@ -14,3 +14,11 @@ def cadastrar_funcionario(funcionario):
         username=funcionario.username,
         password=funcionario.password,
     )
+
+
+def listar_funcionario_id(id):
+    return funcionario_models.Funcionario.objects.get(id=id)
+
+
+def remover_funcionario(funcionario):
+    funcionario.delete()

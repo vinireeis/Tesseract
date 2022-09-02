@@ -12,4 +12,9 @@ urlpatterns = [
         funcionario_views.listar_funcionarios,
         name="listar_funcionarios",
     ),
+    path(
+        "remover_funcionario/<int:id>",
+        funcionario_views.remover_funcionario,
+        name="remover_funcionario",
+    ),
 ]

@@ -20,9 +20,7 @@ def inserir_funcionario(request):
             nascimento = form_funcionario.cleaned_data["nascimento"]
             cargo = form_funcionario.cleaned_data["cargo"]
             username = form_funcionario.cleaned_data["username"]
-            password = make_password(
-                form_funcionario.cleaned_data["password1"]
-            )
+            password = make_password(form_funcionario.cleaned_data["password1"])
             funcionario_novo = funcionario.Funcionario(
                 nome=nome,
                 nascimento=nascimento,
@@ -38,4 +36,14 @@ def inserir_funcionario(request):
         request,
         "funcionarios/form_funcionario.html",
         {"form_funcionario": form_funcionario},
+    )
+
+
+def remover_funcionario(request, id):
+    funcionario = funcionario_service.listar_funcionario_id(id)
+    if request.method == "POST":
+        funcionario_service.remover_funcionario(funcionario)
+        return redirect("listar_funcionarios")
+    return render(
+        request, "funcionarios/confirma_exclusao.html", {"funcionario": funcionario}
     )

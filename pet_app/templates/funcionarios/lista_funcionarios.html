@@ -26,6 +26,11 @@ LISTA DE FUNCIONÁRIOS
                 <td>{{i.username}}</td>
                 <td>{{i.nascimento}}</td>
                 <td>{{i.get_cargo_display|title}}</td>
+
+                <td>
+                    <a href="{% url 'remover_funcionario' i.id %}" style="color: red;">Remover</a>
+
+                </td>
             </tr>
             {% endfor %}
             </tbody>
