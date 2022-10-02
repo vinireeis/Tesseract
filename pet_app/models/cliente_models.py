@@ -1,5 +1,10 @@
 from django.db.models import (
-    CharField, Model, DateTimeField, EmailField, ForeignKey, DateField
+    CharField,
+    Model,
+    DateTimeField,
+    EmailField,
+    ForeignKey,
+    DateField,
 )
 from django.db.models.deletion import CASCADE
 from django_localflavor_br.br_states import STATE_CHOICES
@@ -7,7 +12,7 @@ from django_localflavor_br.br_states import STATE_CHOICES
 
 class TimeStampedModel(Model):
     created_on = DateTimeField(auto_now_add=True)
-    
+
     class Meta:
         abstract = True
 
