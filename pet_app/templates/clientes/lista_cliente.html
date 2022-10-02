@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}
+DADOS DO CLIENTE
+{% endblock title %}
+
+{% block content %}
+
+<section class="content">
+      <div class="row">
+        <div class="col-md-3">
+          <!-- Área de Dados do Cliente-->
+          <div class="box box-primary" style="border-radius: 15px; margin-left: 20px;">
+            <div class="box-body box-profile">
+              <br>
+              <h3 class="profile-username text-center"><b>{{ cliente.nome|upper }}</b></h3>
+              <p class="text-muted text-center"><b>Profissão:</b> {{ cliente.profissao|title }}</p><br>
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Data de nascimento</b> <a class="pull-right">{{ cliente.data_nascimento|date:"d/m/Y" }}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>CPF</b> <a class="pull-right">{{ cliente.cpf }}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Endereço</b> <a class="pull-right">{{ cliente.endereco.rua|title }}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Cidade/UF</b> <a class="pull-right"> {{ cliente.endereco.cidade|title }} | {{cliente.endereco.estado}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>E-mail</b> <a class="pull-right">{{ cliente.email }}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Inclusão</b> <a class="pull-right" style="font-size: 10px;">{{cliente.created_on}}</a>
+                </li>                
+              </ul>
+            </div>
+          </div>
+          <!-- Área de Pets Cadastrados-->
+          <div class="box box-primary" style="border-radius: 15px; margin-left: 20px;">
+            <div class="box-header with-border text-center">
+              <h3 class="box-title"><b>Pets Cadastrados</b></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              {% for pet in pets %}            
+              <a href="{% url 'listar_pet_id' pet.id %}">
+                <strong><i class="fa fa-paw margin-r-5"></i>{{pet.nome | upper}}</strong>
+              </a>
+              <br>
+              <br>
+              <p class="text-muted">
+                <b>CATEGORIA:</b>   {{pet.get_categoria_display}}  |  <b>COR:</b> {{pet.get_cor_display}}             
+              </p>
+              <br>
+              {% endfor %}
+              <hr>            
+              <div class="row">
+                <div class="col-md-12">
+                  <a href="{% url 'cadastrar_pet' cliente.id %}" class="btn btn-primary btn-block">Cadastrar Pet</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Dados da Consulta -->
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#timeline" data-toggle="tab"><b>Histórico de Consultas dos Pets</b></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="timeline">
+                        <ul class="timeline timeline-inverse">
+                            <li class="time-label">
+                        <span class="bg-red">
+                          {% now "SHORT_DATE_FORMAT" %}
+                        </span>
+                            </li>
+                            {% for consulta in consultas %}
+                            <li>
+                                <i class="fa fa-paw bg-green"></i>
+                                <div class="timeline-item">
+                                    <span class="time"> <i class="fa fa-calendar"></i>
+                                        {{consulta.data}}
+                                    </span>
+                                    <h3 class="timeline-header">
+                                        <b>{{consulta.pet.nome|title}}</b> realizou nova consulta
+                                    </h3>
+                                    <div class="timeline-body">
+                                        <b>MOTIVO:</b> {{consulta.motivo_consulta|title}}
+                                    </div>
+                                    <div class="timeline-footer">
+                                      <a class="btn btn-primary btn-xs" href="{% url 'listar_consulta_id' consulta.id %}">
+                                        Visualizar consulta
+                                      </a>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            <li>
+                                <i class="fa fa-clock-o bg-gray"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</section>
+{% endblock content %}

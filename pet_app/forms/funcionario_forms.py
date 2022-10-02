@@ -1,11 +1,11 @@
 from django.forms import DateInput
 from django.contrib.auth.forms import UserCreationForm
-from ..models import funcionario_models
+from ..models.funcionario_models import Funcionario
 
 
 class FuncionarioForm(UserCreationForm):
     class Meta:
-        model = funcionario_models.Funcionario
+        model = Funcionario
         fields = UserCreationForm.Meta.fields + (
             "nome",
             "nascimento",
