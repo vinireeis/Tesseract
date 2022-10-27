@@ -8,12 +8,12 @@ def cadastrar_cliente(cliente):
         endereco=cliente.endereco,
         cpf=cliente.cpf,
         data_nascimento=cliente.data_nascimento,
-        profissao=cliente.profissao
+        profissao=cliente.profissao,
     )
 
 
 def listar_clientes():
-    return cliente_models.Cliente.objects.all()   
+    return cliente_models.Cliente.objects.all()
 
 
 def listar_cliente_id(id):

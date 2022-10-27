@@ -3,15 +3,9 @@ from django.urls import path
 
 urlpatterns = [
     path(
-        "cadastrar_cliente",
-        cliente_views.cadastrar_cliente,
-        name="cadastrar_cliente"
+        "cadastrar_cliente", cliente_views.cadastrar_cliente, name="cadastrar_cliente"
     ),
-    path(
-        "listar_clientes",
-        cliente_views.listar_clientes,
-        name="listar_clientes"
-    ),
+    path("listar_clientes", cliente_views.listar_clientes, name="listar_clientes"),
     path(
         "listar_cliente/<int:id>",
         cliente_views.listar_cliente_id,
@@ -23,9 +17,7 @@ urlpatterns = [
         name="remover_cliente",
     ),
     path(
-        "editar_cliente/<int:id>",
-        cliente_views.editar_cliente,
-        name="editar_cliente"
+        "editar_cliente/<int:id>", cliente_views.editar_cliente, name="editar_cliente"
     ),
     path(
         "cadastrar_funcionario",
@@ -47,14 +39,6 @@ urlpatterns = [
         funcionario_views.editar_funcionario,
         name="editar_funcionario",
     ),
-    path(
-        "login",
-        autenticacao_views.login_usuario,
-        name="login"
-    ),
-    path(
-        "logout",
-        autenticacao_views.deslogar_usuario,
-        name="logout"
-    ),
+    path("login", autenticacao_views.login_usuario, name="login"),
+    path("logout", autenticacao_views.deslogar_usuario, name="logout"),
 ]
