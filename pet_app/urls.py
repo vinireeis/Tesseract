@@ -1,4 +1,4 @@
-from .views import funcionario_views, autenticacao_views, cliente_views
+from .views import funcionario_views, autenticacao_views, cliente_views, pet_views
 from django.urls import path
 
 urlpatterns = [
@@ -41,4 +41,9 @@ urlpatterns = [
     ),
     path("login", autenticacao_views.login_usuario, name="login"),
     path("logout", autenticacao_views.deslogar_usuario, name="logout"),
+    path("cadastrar_pet/<int:id>", pet_views.inserir_pet, name="cadastrar_pet"),
+    path("listar_pet/<int:id>", pet_views.listar_pet_id, name="listar_pet_id"),
+    path("listar_pets", pet_views.listar_pets, name="listar_pets"),
+    path("remover_pet/<int:id>", pet_views.remover_pet, name="remover_pet"),
+    path("editar_pet/<int:id>", pet_views.editar_pet, name="editar_pet"),
 ]

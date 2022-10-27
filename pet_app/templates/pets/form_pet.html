@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load meus_filtros %}
+{% block title %}
+CADASTRO DE PETS
+{% endblock title %}
+
+
+{% block content %}
+<div class="box box-primary" style="border-radius: 15px; margin-left: 20px;">
+    <div class="box-header with-border">
+        <div class="card-title"><h3>            
+            <b>CADASTRO DE PETS</b>            
+        </div>
+    </div>
+    <div class="box-body">
+    <form method="POST">
+        {% csrf_token %}  
+        <br>     
+        <div class="form-group">
+        {{ form_pet.nome.errors }}
+        <label>NOME DO PET:</label>
+        {{form_pet.nome|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+        {{ form_pet.idade.errors }}
+        <label>IDADE:</label>
+        {{form_pet.idade|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+        {{ form_pet.genero.errors }}
+        <label>GÊNERO:</label>
+        {{form_pet.genero|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+        {{ form_pet.categoria.errors }}
+        <label>CATEGORIA:</label>
+        {{form_pet.categoria|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+        {{ form_pet.cor.errors }}
+        <label>COR:</label>
+        {{form_pet.cor|addclass:'form-control' }}
+        </div>        
+
+        <div class="form-group">
+        {{ form_pet.raca.errors }}
+        <label>RAÇA:</label>
+        {{form_pet.raca|addclass:'form-control' }}
+        </div>
+        
+        <div class="form-group">
+        {{ form_pet.peso.errors }}
+        <label>PESO:</label>
+        {{form_pet.peso|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="SALVAR">
+        </div>
+        <div class="form-group">
+            <a href="#" class="btn btn-warning">VOLTAR</a></td> 
+        </div>
+    </form>
+    </div>
+</div>
+{% endblock content %}

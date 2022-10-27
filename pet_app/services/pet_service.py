@@ -40,3 +40,7 @@ def editar_pet(pet, pet_novo):
 def listar_pet_id(id):
     pet = pet_models.Pet.objects.get(id=id)
     return pet
+
+
+def remover_pet(pet):
+    pet.delete()
