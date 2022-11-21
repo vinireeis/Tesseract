@@ -1,4 +1,4 @@
-from .views import funcionario_views, autenticacao_views, cliente_views, pet_views
+from .views import funcionario_views, autenticacao_views, cliente_views, pet_views, consulta_views
 from django.urls import path
 
 urlpatterns = [
@@ -46,4 +46,6 @@ urlpatterns = [
     path("listar_pets", pet_views.listar_pets, name="listar_pets"),
     path("remover_pet/<int:id>", pet_views.remover_pet, name="remover_pet"),
     path("editar_pet/<int:id>", pet_views.editar_pet, name="editar_pet"),
+    path('cadastrar_consulta/<int:id>', consulta_views.inserir_consulta, name='cadastrar_consulta'),
+    path('lista_consulta/<int:id>', consulta_views.listar_consulta_id, name='listar_consulta_id'),
 ]
