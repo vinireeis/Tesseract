@@ -1,8 +1,18 @@
-class ConsultaPet():
-    def __init__(self, pet, motivo_consulta, medicamento_atual, medicamentos_prescritos,
-                 exames, doutor, especialidade, observacoes, data=""):
+class ConsultaPet:
+    def __init__(
+        self,
+        pet,
+        motivo_consulta,
+        medicamento_atual,
+        medicamentos_prescritos,
+        exames,
+        doutor,
+        especialidade,
+        observacoes,
+        data="",
+    ):
         self.__pet = pet
-        self.__motivo_consulta = motivo_consulta        
+        self.__motivo_consulta = motivo_consulta
         self.__medicamento_atual = medicamento_atual
         self.__medicamentos_prescritos = medicamentos_prescritos
         self.__exames = exames
@@ -26,7 +36,7 @@ class ConsultaPet():
     @motivo_consulta.setter
     def motivo_consulta(self, motivo_consulta):
         self.__motivo_consulta = motivo_consulta
-    
+
     @property
     def medicamento_atual(self):
         return self.__medicamento_atual
@@ -73,7 +83,7 @@ class ConsultaPet():
 
     @especialidade.setter
     def especialidade(self, especialidades):
-        self.__especialidade = especialidade
+        self.__especialidade = especialidades
 
     @property
     def observacoes(self):
@@ -82,4 +92,3 @@ class ConsultaPet():
     @observacoes.setter
     def observacoes(self, observacoes):
         self.__observacoes = observacoes
-
